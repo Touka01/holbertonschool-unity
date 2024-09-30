@@ -4,96 +4,37 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float horizontalMove;
-    public float verticalMove;
-    private Vector3 playerInput;
-    public CharacterController player;
+    public float moveSpeed = 5f;
+    public float jumpForce = 5f;
+    private Rigidbody rb;
+    public Transform startPosition;
+    public float respawnHeight = -10f;
+    public float respawnOffset = 2f;
 
-    public float playerSpeed;
-    private Vector3 movePlayer;
-    public float gravity = 9.8f;
-    public float fallVelocity;
-    public float jumpForce;
-
-    public Camera mainCamera;
-    private Vector3 camForward;
-    private Vector3 camRight;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        player = GetComponent<CharacterController>();
-        
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //Mueve al jugador
-        horizontalMove = Input.GetAxis("Horizontal");
-        verticalMove = Input.GetAxis("Vertical");
+        float horizontalMovement = Input.GetAxis("Horizontal");
+        float verticalMovement = Input.GetAxis("Vertical");
 
-        // controlar la velocidad de las diagonales
-        playerInput = new Vector3(horizontalMove, 0, verticalMove);
-        playerInput = Vector3.ClampMagnitude(playerInput, 1);
+        Vector3 movement = new Vector3(horizontalMovement, 0f, verticalMovement) * moveSpeed;
+        rb.velocity = new Vector3(movement.x, rb.velocity.y, movement.z);
 
-        CamDirection();
-
-        movePlayer = playerInput.x * camRight + playerInput.z * camForward;
-
-        movePlayer = movePlayer * playerSpeed;
-        player.transform.LookAt(player.transform.position + movePlayer);
-
-        SetGravity();
-
-        PlayerSkills();
-
-        // * playerSpeed * Time.deltaTime = controla la velocidad del jugador
-        player.Move(movePlayer * Time.deltaTime);
-
-       if (transform.position.y < -40)
-            transform.position = new Vector3(0, 60, 0);
-    }
-
-    public void CamDirection()
-    {
-        camForward = mainCamera.transform.forward;
-        camRight = mainCamera.transform.right;
-
-        // No necesitamos los ejes Y
-        camForward.y = 0;
-        camRight.y = 0;
-
-        camForward = camForward.normalized;
-        camRight = camRight.normalized;
-    }
-
-    public void PlayerSkills()
-    {
-        if(player.isGrounded && Input.GetButtonDown("Jump"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            fallVelocity = jumpForce;
-            movePlayer.y = fallVelocity;
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+
+        if (transform.position.y < respawnHeight)
+        {
+            rb.velocity = Vector3.zero;
+            rb.useGravity = false;
+            transform.position = startPosition.position + Vector3.up * respawnOffset;
+            rb.useGravity = true;
         }
     }
-    public void SetGravity()
-    {
-        if(player.isGrounded)
-        {
-            fallVelocity = -gravity * Time.deltaTime;
-            movePlayer.y = fallVelocity;
-        }
-        else
-        {
-            fallVelocity -= gravity * Time.deltaTime;
-            movePlayer.y = fallVelocity;
-        }
-    }
-    
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Fall_space"))
-    //     {
-    //         transform.position = new Vector3(0, 5, 0);
-    //     }
-    // }
 }

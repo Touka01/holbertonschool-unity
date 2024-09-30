@@ -1,26 +1,27 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WinTrigger : MonoBehaviour
 {
-    public GameObject player;
-    // public Text timerText;
     public GameObject winCanvas;
-    // Start is called before the first frame update
+    private float startTime;
+
     void Start()
     {
-        player = FindObjectOfType<PlayerController>().gameObject;
-        // timerText = GameObject.Find("TimerCanvas").transform.Find("TimerText").GetComponent<Text>();
+        startTime = Time.time;
     }
 
     void OnTriggerEnter(Collider other)
     {
-        winCanvas.SetActive(true);
-        player.GetComponent<Timer>().enabled = false;
-        // timerText.enabled = false;
-        player.GetComponent<PauseMenu>().enabled = false;
-        player.GetComponent<Timer>().Win();
+        Timer otherTimer = other.GetComponent<Timer>();
+        if (otherTimer != null)
+        {
+            float finishTime = Time.time - startTime;
+            otherTimer.Win(finishTime);
+            if (winCanvas != null)
+                winCanvas.SetActive(true);
+        }
     }
 }

@@ -1,9 +1,18 @@
 fileFormatVersion: 2
-guid: 0647bd1270eb29040928c719461112cb
+guid: c2514a27467778e42babc462d07dc20e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4928742352451709002
+    second: button-level01 1_0
+  - first:
+      213: -3044749665540109536
+    second: button-level01 1_1
+  - first:
+      213: 420714208305049663
+    second: button-level01_0
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -33,7 +42,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +57,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 0, y: 0, z: 1226, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -63,13 +72,14 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -89,7 +99,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -112,11 +122,35 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: button-level01_0
+      name: button1
       rect:
         serializedVersion: 2
         x: 0
@@ -130,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ba2a69be97107624fa0861fe1d8d6cf5
-      internalID: 1752109164
+      spriteID: f307bf9e75da6d500800000000000000
+      internalID: 420714208305049663
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-level01_1
+      name: button1highlight
       rect:
         serializedVersion: 2
         x: 600
@@ -151,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66a7128e9e0e810469d3f8091df71418
-      internalID: 1451108088
+      spriteID: 5787ddfca9b324e489407945300a4c35
+      internalID: 1672099080
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: button-level01_2
+      name: button1pressed
       rect:
         serializedVersion: 2
         x: 1220
@@ -172,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da439acb4df480c4db29671e18e58e5e
-      internalID: 525847925
+      spriteID: 16f207df093f44a76ba7c669fed9f1c5
+      internalID: 1920876364
       vertices: []
       indices: 
       edges: []
@@ -189,9 +223,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      button-level01_2: 525847925
-      button-level01_1: 1451108088
-      button-level01_0: 1752109164
+      button1: 420714208305049663
+      button1highlight: 1672099080
+      button1pressed: 1920876364
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

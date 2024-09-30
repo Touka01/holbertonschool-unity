@@ -1,48 +1,45 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    //-----Privates variables-----\\
-    private Vector3 offset;
-
-    //-----Publics variables-----\\
-    [Header("Variables")]
     public Transform player;
+    public float followSpeed = 5f;
+    public float rotationSpeed = 2f;
+    public bool isInverted = false;
+    public float minY = 0f;
 
-    [Space]
-    [Header("Position")]
-    public float camPosX;
-    public float camPosY;
-    public float camPosZ;
+    private Vector3 offset;
+    private bool isRotating;
 
-    [Space]
-    [Header("Rotation")]
-    public float camRotationX;
-    public float camRotationY;
-    public float camRotationZ;
-
-    [Space]
-    [Range(0f, 10f)]
-    public float turnSpeed;
-    public bool isInverted;
-
-    //-----Privates functions-----\\
     private void Start()
     {
-        offset = new Vector3(player.position.x + camPosX, player.position.y + camPosY, player.position.z + camPosZ);
-        transform.rotation = Quaternion.Euler(camRotationX, camRotationY, camRotationZ);
+        offset = transform.position - player.position;
     }
 
-
-    private void LateUpdate()
+    private void Update()
     {
-        if (isInverted)
-            offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * Quaternion.AngleAxis(-Input.GetAxis("Mouse Y") * turnSpeed, Vector3.right) * offset;
-        else
-            offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * turnSpeed, Vector3.up) * Quaternion.AngleAxis(Input.GetAxis("Mouse Y") * turnSpeed, Vector3.right) * offset;
-        transform.position = player.position + offset;
-        transform.LookAt(player.position);
+        // Camera follow
+        Vector3 targetPosition = player.position + offset;
+        targetPosition.y = Mathf.Max(targetPosition.y, minY);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, followSpeed * Time.deltaTime);
+
+        // Camera rotation
+        if (Input.GetMouseButton(1))
+        {
+            isRotating = true;
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            isRotating = false;
+        }
+
+        if (isRotating)
+        {
+            float mouseY = Input.GetAxis("Mouse Y") * rotationSpeed * (isInverted ? -1 : 1);
+            Vector3 eulerAngleDelta = new Vector3(0f, 0f, mouseY);
+            Quaternion rotationDelta = Quaternion.Euler(eulerAngleDelta);
+            transform.rotation *= rotationDelta;
+        }
     }
 }

@@ -1,34 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     public GameObject winCanvas;
-    public Text timerText;
-    private float startTime;
+    public TMPro.TextMeshProUGUI finalTime;
+    public Text TimerText;
+    private float elapsedTime;
 
-    void Start()
+    private void Start()
     {
-        startTime = Time.time;
+        // Reset the elapsed time
+        elapsedTime = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        float t = Time.time - startTime;
+        elapsedTime += Time.deltaTime;
 
-        string minutes = ((int) t / 60).ToString();
-        string seconds = ((int) t % 60).ToString("D2");
-        string hundredths = ((int)(t * 100) % 100).ToString("D2");
+        int minutes = (int)(elapsedTime / 60f);
+        int seconds = (int)(elapsedTime % 60f);
+        int milliseconds = (int)((elapsedTime * 100f) % 100f);
 
-        timerText.text = $"{minutes}:{seconds}.{hundredths}";
+        TimerText.text = string.Format("{0:00}:{1:00}.{2:00}", minutes, seconds, milliseconds);
     }
-
-    public void Win()
+    public void Win(float finishTime)
     {
-        winCanvas.transform.Find("FinalTime").GetComponent<Text>().text = timerText.text;
-        timerText.text = "";
+        elapsedTime = finishTime;
+        if (winCanvas != null && finalTime != null)
+        {
+            finalTime.text = "Finish Time: " + elapsedTime.ToString("F2");
+            TimerText.gameObject.SetActive(false);
+        }
     }
 }

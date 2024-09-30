@@ -1,25 +1,27 @@
-using UnityEngine.SceneManagement;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class WinMenu : MonoBehaviour
 {
-     void Start()
-    {
-        transform.Find("MenuButton").gameObject.GetComponent<Button>().onClick.AddListener(MainMenu);
-        transform.Find("NextButton").gameObject.GetComponent<Button>().onClick.AddListener(Next);
-    }
-
     public void MainMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
     }
+
     public void Next()
     {
-        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (sceneIndex < 2)
-            SceneManager.LoadScene(sceneIndex + 1);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        int nextSceneIndex = currentSceneIndex + 1;
+        if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene(nextSceneIndex);
+        }
         else
-            MainMenu();
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
     }
 }
+

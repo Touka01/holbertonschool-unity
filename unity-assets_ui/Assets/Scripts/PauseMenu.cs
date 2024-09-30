@@ -1,23 +1,16 @@
-using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPause = false;
-    public GameObject PauseMenuIU;
-    private int currentScene;
+    public GameObject pauseCanvas;
+    private bool isPaused = false;
 
-    void Start()
-    {
-        currentScene = SceneManager.GetActiveScene().buildIndex;
-    }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPause)
+            if (isPaused)
             {
                 Resume();
             }
@@ -28,22 +21,35 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void Resume()
-    {
-        PauseMenuIU.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPause = false;
-    }
-
     public void Pause()
     {
-        PauseMenuIU.SetActive(true);
-        Time.timeScale = 0f;
-        GameIsPause = true;
+        Time.timeScale = 0f; // Pause the game
+        isPaused = true;
+        pauseCanvas.SetActive(true); // Activate the PauseCanvas
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+        isPaused = false;
+        pauseCanvas.SetActive(false); 
     }
 
     public void Restart()
     {
-        SceneManager.LoadScene(currentScene);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
+        Time.timeScale = 1f; 
+    }
+    public void MainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1f;
+    }
+
+    public void Options()
+    {
+        OptionsMenu.previousSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene("Options");
+        Time.timeScale = 1f;
     }
 }

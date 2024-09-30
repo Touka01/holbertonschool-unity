@@ -1,9 +1,18 @@
 fileFormatVersion: 2
-guid: 89d45457504f6ab4e9f66da97da9a4b8
+guid: 97d47089170550a4c90e9e44711fcc4f
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3945451662944984592
+    second: bg-button_0
+  - first:
+      213: 8440510077267459181
+    second: bg-button_1
+  - first:
+      213: 1641548200286959669
+    second: bg-button_2
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -48,7 +57,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 199, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -63,6 +72,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -89,7 +99,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -112,6 +122,30 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -121,7 +155,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 199
+        width: 201
         height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -130,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6a9fb04873089fe4aa864002bc7bd552
-      internalID: 1947855016
+      spriteID: 01e5f40326f01c630800000000000000
+      internalID: 3945451662944984592
       vertices: []
       indices: 
       edges: []
@@ -140,9 +174,9 @@ TextureImporter:
       name: bg-button_1
       rect:
         serializedVersion: 2
-        x: 200
+        x: 203
         y: 0
-        width: 199
+        width: 198
         height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -151,8 +185,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee8cbd80a62e50e45a933359ee6d6967
-      internalID: 326640059
+      spriteID: d6cb1ae0237b22570800000000000000
+      internalID: 8440510077267459181
       vertices: []
       indices: 
       edges: []
@@ -161,9 +195,9 @@ TextureImporter:
       name: bg-button_2
       rect:
         serializedVersion: 2
-        x: 400
+        x: 403
         y: 0
-        width: 199
+        width: 197
         height: 70
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -172,8 +206,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f5bfbc24693128b4c80e6aef68b865e4
-      internalID: -303590993
+      spriteID: 53839cf0463f7c610800000000000000
+      internalID: 1641548200286959669
       vertices: []
       indices: 
       edges: []
@@ -189,9 +223,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      bg-button_0: 1947855016
-      bg-button_1: 326640059
-      bg-button_2: -303590993
+      bg-button_0: 3945451662944984592
+      bg-button_1: 8440510077267459181
+      bg-button_2: 1641548200286959669
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
